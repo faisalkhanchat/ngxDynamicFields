@@ -1,0 +1,77 @@
+<div class="panel">
+  <h3 class="head">Add Menues </h3>
+  <form [formGroup]="menuForm" (ngSubmit)="menuForm.valid && addMenu()">
+    <div class="category_single">
+      <h4 class="c_title"> Catergories </h4>
+
+      <div class="menu_category" formArrayName="menuCategories">
+        
+        <div *ngFor="let item of menuCategories.controls; let catIndex=index"
+          [formGroupName]="catIndex">
+          <div class="panel">
+            <button type="button" (click)="removeCategories(catIndex)"
+              class="remove catRem btn-circle" mat-button>
+              <mat-icon> remove </mat-icon>
+            </button>
+            <div class="row">
+              <div class="col-sm-10 col-12">
+                <mat-form-field>
+                  <input matInput placeholder="Enter category name"
+                    formControlName="categoryName">
+                  <!-- <mat-error *ngIf="menuForm['controls']['categoryName']['errors']">{{getValidationError(menuForm['controls']['categoryName'],
+                      'categoryName')}}</mat-error> -->
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="menu_item_group" formArrayName="menu_items">
+              <div class="row" *ngFor="let item of
+                menu_items(catIndex).controls; let mIndex=index"
+                [formGroupName]="mIndex">
+                <div class="col-sm-5 col-6">
+                  <mat-form-field>
+                    <input matInput placeholder="Enter menu item Name"
+                      formControlName="menuItemName">
+                    <!-- <mat-error *ngIf="menuForm['controls']['menuItemName']['errors']">{{getValidationError(menuForm['controls']['menuItemName'], 'menuItemName')}}</mat-error> -->
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-5 col-6">
+                  <mat-form-field>
+                    <input matInput type="number" placeholder="Enter price"
+                      formControlName="menuItemPrice">
+                    <!-- <mat-error *ngIf="menuForm['controls']['menuItemPrice']['errors']">{{getValidationError(menuForm['controls']['menuItemPrice'], 'menuItemPrice')}}</mat-error> -->
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-2 col-12">
+                  <button type="button" (click)="removeMenuItem(catIndex,
+                    mIndex)" data-id="{{mIndex}}"
+                    class="remove btn-circle" mat-button>
+                    <mat-icon> remove </mat-icon>
+                  </button>
+                </div>
+              </div>
+              <button type="button" (click)="addMenuItem(catIndex)"
+                data-id="{{catIndex}}" class="add
+                menuAdd
+                btn-circle" mat-button>
+                <mat-icon> add </mat-icon>
+              </button>
+
+
+            </div>
+
+          </div>
+        </div>
+        <button type="button" (click)="addCategories()" class="add"
+          mat-button>
+          <mat-icon> add </mat-icon> Add Category
+        </button>
+      </div>
+      <div class="form-btn">
+        <button type="submit" mat-raised-button class="btn-block"
+          color="primary"> Save Details </button>
+      </div>
+    </div>
+  </form>
+
+</div>
