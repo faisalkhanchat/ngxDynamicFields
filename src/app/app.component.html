@@ -1,7 +1,9 @@
 <div class="pageWrapper">
 
   <div class="container">
-    <app-add-menu></app-add-menu>
+    <button mat-button [routerLink]="[ 'nested' ]" routerLinkActive="active"> Nested Dynamic Field </button> 
+    <button mat-button  [routerLink]="[ 'single' ]" routerLinkActive="active"> Single Dynamic Field </button> 
+    <router-outlet></router-outlet>
   </div>
   
 </div>

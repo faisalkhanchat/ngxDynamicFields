@@ -30,6 +30,11 @@
               "node_modules/bootstrap-4-grid/scss/grid.scss",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                  "./src/sass"
+                ]
+            },
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,38 @@
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500');
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$custom-primary: mat-palette($mat-indigo);
+$custom-accent:  mat-palette($mat-pink, A200, A100, A400);
+$custom-warn :    mat-palette($mat-red);
+$custom-theme:   mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+// Include the default theme styles.
+@include angular-material-theme($custom-theme);
+
+$custom-typography: mat-typography-config($font-family: '"Poppins", sans-serif;');
+@include mat-core($custom-typography);
+@mixin color($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+}
+
+// $colors: (
+//   primary: mat-color($custom-primary),
+//   primary-light: lighten(mat-color($custom-primary), 40%),
+//   primary-dark: darken(mat-color($custom-primary), 40%),
+// );
+
+// @function color($color-name) {
+//     @return map-get($colors, $color-name);
+// }
+  
+$primary : mat-color($custom-primary);
+$primary-light : lighten(mat-color($custom-primary), 40%);
+$primary-dark : darken(mat-color($custom-primary), 40%);

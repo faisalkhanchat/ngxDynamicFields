@@ -1,0 +1,43 @@
+<div class="panel_wrap">
+  <h3 class="head">Add Menues </h3>
+  <form [formGroup]="menuForm" (ngSubmit)="menuForm.valid && addMenu()">
+    <div class="category_single">
+      <div class="panel">
+        <div class="menu_item_group" formArrayName="menu_items">
+
+          <div class="row" *ngFor="let item of menu_items.controls; let pointIndex=index" [formGroupName]="pointIndex">
+            <div class="col-sm-5 col-6">
+              <mat-form-field>
+                <input matInput placeholder="Enter menu item Name" formControlName="menuItemName">
+                <!-- <mat-error *ngIf="menuForm['controls']['menuItemName']['errors']">{{getValidationError(menuForm['controls']['menuItemName'], 'menuItemName')}}</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col-sm-5 col-6">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Enter price" formControlName="menuItemPrice">
+                <!-- <mat-error *ngIf="menuForm['controls']['menuItemPrice']['errors']">{{getValidationError(menuForm['controls']['menuItemPrice'], 'menuItemPrice')}}</mat-error> -->
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2 col-12">
+              <button type="button" (click)="deleteSellingPoint(pointIndex)" class="remove btn-circle" mat-button>
+                <mat-icon> remove </mat-icon>
+              </button>
+            </div>
+          </div>
+          <button type="button" (click)="addSellingPoint()" class="add menuAdd btn-circle" mat-button>
+            <mat-icon> add </mat-icon>
+          </button>
+        </div>
+
+
+
+      </div>
+
+    </div>
+
+    <div class="form-btn">
+      <button type="submit" mat-raised-button class="btn-block" color="primary"> Save Details </button>
+    </div>
+  </form>
+
+</div>

@@ -64,12 +64,12 @@ export class AddMenuComponent implements OnInit {
 
 
   addMenu() {
-    alert('submitted');
+    alert('submitted check console');
     if (this.menuForm.invalid) {
       return;
     }
 
-    let data = this.menuForm.value;
+    const data = this.menuForm.value;
     console.log(data);
 
   }

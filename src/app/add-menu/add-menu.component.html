@@ -1,9 +1,8 @@
-<div class="panel">
-  <h3 class="head">Add Menues </h3>
+<div class="panel_wrap">
+  <h3 class="head">Catergories</h3>
   <form [formGroup]="menuForm" (ngSubmit)="menuForm.valid && addMenu()">
     <div class="category_single">
-      <h4 class="c_title"> Catergories </h4>
-
+      
       <div class="menu_category" formArrayName="menuCategories">
         
         <div *ngFor="let item of menuCategories.controls; let catIndex=index"
